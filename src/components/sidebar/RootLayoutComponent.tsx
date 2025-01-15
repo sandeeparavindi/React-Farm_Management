@@ -1,11 +1,13 @@
-import {Outlet} from "react-router";
-import {NavbarComponent} from "./NavbarComponent.tsx";
+import { Outlet } from "react-router";
+import { SidebarComponent } from "./SidebarComponent.tsx";
 
 export const RootLayoutComponent = () => {
     return (
-        <>
-            <NavbarComponent></NavbarComponent>
-            <Outlet></Outlet>
-        </>
+        <div className="flex">
+            <SidebarComponent />
+            <div className="flex-grow">
+                <Outlet />
+            </div>
+        </div>
     );
 };
