@@ -93,7 +93,7 @@ export const VehicleFormComponent = () => {
                             onChange={(e) => setVehicleCode(e.target.value)}
                             onKeyDown={handleKeyDown}
                             value={vehicleCode}
-                            className="w-full p-2 border rounded border-blue-600"
+                            className="w-full p-2 border rounded border-green-600"
                             placeholder="V123"
                             required
                         />
@@ -110,7 +110,7 @@ export const VehicleFormComponent = () => {
                             id="license_plate"
                             onChange={(e) => setLicensePlate(e.target.value)}
                             value={licensePlate}
-                            className="w-full p-2 border rounded border-blue-600"
+                            className="w-full p-2 border rounded border-green-600"
                             placeholder="ABC-1234"
                             required
                         />
@@ -127,7 +127,7 @@ export const VehicleFormComponent = () => {
                             id="category"
                             onChange={(e) => setCategory(e.target.value)}
                             value={category}
-                            className="w-full p-2 border rounded border-blue-600"
+                            className="w-full p-2 border rounded border-green-600"
                             placeholder="Truck"
                             required
                         />
@@ -144,7 +144,7 @@ export const VehicleFormComponent = () => {
                             id="fuel"
                             onChange={(e) => setFuel(e.target.value)}
                             value={fuel}
-                            className="w-full p-2 border rounded border-blue-600"
+                            className="w-full p-2 border rounded border-green-600"
                             placeholder="Diesel"
                             required
                         />
@@ -161,7 +161,7 @@ export const VehicleFormComponent = () => {
                             id="status"
                             onChange={(e) => setStatus(e.target.value)}
                             value={status}
-                            className="w-full p-2 border rounded border-blue-600"
+                            className="w-full p-2 border rounded border-green-600"
                             placeholder="Active"
                             required
                         />
@@ -178,7 +178,7 @@ export const VehicleFormComponent = () => {
                             id="remarks"
                             onChange={(e) => setRemarks(e.target.value)}
                             value={remarks}
-                            className="w-full p-2 border rounded border-blue-600"
+                            className="w-full p-2 border rounded border-green-600"
                             placeholder="Good Condition"
                         />
                     </div>
@@ -189,25 +189,26 @@ export const VehicleFormComponent = () => {
                 <button
                     type="button"
                     onClick={() => handleVehicleOperation("ADD_VEHICLE")}
-                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    className="w-full text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                     Add Vehicle
                 </button>
                 <button
                     type="button"
                     onClick={() => handleVehicleOperation("UPDATE_VEHICLE")}
-                    className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    className="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                     Update Vehicle
                 </button>
                 <button
                     type="button"
                     onClick={() => handleVehicleOperation("DELETE_VEHICLE")}
-                    className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    className="w-full text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                     Delete Vehicle
                 </button>
             </div>
+
 
             <VehicleTableComponent vehicles={vehicles}/>
         </>
