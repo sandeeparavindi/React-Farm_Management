@@ -6,8 +6,6 @@ import { VehicleTableComponent } from "./VehicleTableComponent";
 
 export const VehicleFormComponent = () => {
     const dispatch = useDispatch();
-
-    // Access the vehicles from Redux store
     const vehicles = useSelector((state) => state.vehicle);
 
     const [vehicleCode, setVehicleCode] = useState("");
@@ -54,6 +52,29 @@ export const VehicleFormComponent = () => {
         setRemarks("");
     };
 
+    const handleSearchByCode = () => {
+        const foundVehicle = vehicles.find(
+            (vehicle: Vehicle) => vehicle.vehicle_code === vehicleCode
+        );
+        if (foundVehicle) {
+            setLicensePlate(foundVehicle.licen_plate);
+            setCategory(foundVehicle.category);
+            setFuel(foundVehicle.fuel);
+            setStatus(foundVehicle.status);
+            setRemarks(foundVehicle.remarks);
+        } else {
+            alert("Vehicle not found");
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            e.preventDefault(); // Prevent form submission
+            handleSearchByCode();
+        }
+    };
+
+
     return (
         <>
             <form className="mx-2 mt-6">
@@ -69,6 +90,7 @@ export const VehicleFormComponent = () => {
                             type="text"
                             id="vehicle_code"
                             onChange={(e) => setVehicleCode(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             value={vehicleCode}
                             className="w-full p-2 border rounded border-blue-600"
                             placeholder="V123"
@@ -186,7 +208,7 @@ export const VehicleFormComponent = () => {
                 </button>
             </div>
 
-            <VehicleTableComponent vehicles={vehicles} />
+            <VehicleTableComponent vehicles={vehicles}/>
         </>
     );
 };
