@@ -11,9 +11,10 @@ const vehicleSlice = createSlice({
             state.push(action.payload);
         },
         updateVehicle(state, action: PayloadAction<Vehicle>) {
-            return state.map(vehicle =>
-                vehicle.vehicle_code === action.payload.vehicle_code ? action.payload : vehicle
-            );
+            const index = state.findIndex(vehicle => vehicle.vehicle_code === action.payload.vehicle_code);
+            if (index !== -1) {
+                state[index] = action.payload;
+            }
         },
         deleteVehicle(state, action: PayloadAction<string>) {
             return state.filter(vehicle => vehicle.vehicle_code !== action.payload);
