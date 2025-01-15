@@ -6,6 +6,7 @@ import { VehicleTableComponent } from "./VehicleTableComponent";
 
 export const VehicleFormComponent = () => {
     const dispatch = useDispatch();
+    // @ts-ignore
     const vehicles = useSelector((state) => state.vehicle);
 
     const [vehicleCode, setVehicleCode] = useState("");
