@@ -17,8 +17,8 @@ export const CropFormComponent = () => {
     const [cropImage, setCropImage] = useState<File | null>(null);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
-    const categories = ["Rice", "Cereal", "Vegetable", "Fruit"];  // Example categories
-    const seasons = ["Winter", "Summer", "Autumn", "Spring"];    // Example seasons
+    const categories = ["Rice", "Cereal", "Vegetable", "Fruit"];
+    const seasons = ["Winter", "Summer", "Autumn", "Spring"];
 
     const handleCropOperation = (type: string) => {
         if (!cropCode || !commonName || !scientificName || !category || !season) {
