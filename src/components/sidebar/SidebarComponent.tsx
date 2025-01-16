@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaTractor, FaTruck } from "react-icons/fa";
+import {FaDesktop, FaHome, FaLeaf, FaTools, FaTractor, FaTruck, FaUsers} from "react-icons/fa";
 
 export const SidebarComponent = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -51,7 +51,7 @@ export const SidebarComponent = () => {
                 </div>
 
                 {/* Menu */}
-                <ul className="space-y-2 p-4 mt-5">
+                <ul className="space-y-2 p-4 mt-14">
                     {/* Home Link */}
                     <li>
                         <Link
@@ -74,6 +74,17 @@ export const SidebarComponent = () => {
                         </Link>
                     </li>
 
+                    {/* Crops Link */}
+                    <li>
+                        <Link
+                            to="/crops"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
+                        >
+                            <FaLeaf className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Crop</span>}
+                        </Link>
+                    </li>
+
                     {/* Vehicles Link */}
                     <li>
                         <Link
@@ -82,6 +93,39 @@ export const SidebarComponent = () => {
                         >
                             <FaTruck className="text-lg text-white" size={24} />
                             {isSidebarOpen && <span className="text-lg text-white">Vehicle</span>}
+                        </Link>
+                    </li>
+
+                    {/* Staffs Link */}
+                    <li>
+                        <Link
+                            to="/staffs"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
+                        >
+                            <FaUsers className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Staff</span>}
+                        </Link>
+                    </li>
+
+                    {/* Monitoring Logs Link */}
+                    <li>
+                        <Link
+                            to="/logs"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
+                        >
+                            <FaDesktop className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Monitoring Log</span>}
+                        </Link>
+                    </li>
+
+                    {/* Equipments Link */}
+                    <li>
+                        <Link
+                            to="/equipments"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
+                        >
+                            <FaTools className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Equipment</span>}
                         </Link>
                     </li>
                 </ul>
