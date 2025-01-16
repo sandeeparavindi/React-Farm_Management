@@ -117,55 +117,79 @@ export const VehicleFormComponent = () => {
                     </div>
                     <div>
                         <label
-                            htmlFor="category"
+                            htmlFor="vehicleCategory"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
                         >
                             Category
                         </label>
-                        <input
-                            type="text"
-                            id="category"
-                            onChange={(e) => setCategory(e.target.value)}
-                            value={category}
+                        <select
+                            id="vehicleCategory"
                             className="w-full p-2 border rounded border-blue-400 mb-2"
-                            placeholder="Truck"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="" disabled>
+                                Select Vehicle Category
+                            </option>
+                            <option value="Car">Car</option>
+                            <option value="Van">Van</option>
+                            <option value="Motorbikes">Motorbikes</option>
+                            <option value="Tractors-Land masters">Tractors-Land masters</option>
+                            <option value="Tractors-4WD">Tractors-4WD</option>
+                            <option value="Tankers truck">Tankers truck</option>
+                            <option value="Land vehicles">Land vehicles</option>
+                            <option value="Lorry">Lorry</option>
+                        </select>
                     </div>
+
                     <div>
                         <label
-                            htmlFor="fuel"
+                            htmlFor="fuelType"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
                         >
-                            Fuel
+                            Fuel Type
                         </label>
-                        <input
-                            type="text"
-                            id="fuel"
-                            onChange={(e) => setFuel(e.target.value)}
-                            value={fuel}
+                        <select
+                            id="fuelType"
                             className="w-full p-2 border rounded border-blue-400"
-                            placeholder="Diesel"
+                            value={fuel}
+                            onChange={(e) => setFuel(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="" disabled>
+                                Select Fuel Type
+                            </option>
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Kerosene">Kerosene</option>
+                            <option value="Fuel oil">Fuel oil</option>
+                            <option value="Bitumen">Bitumen</option>
+                        </select>
                     </div>
+
                     <div>
                         <label
-                            htmlFor="status"
+                            htmlFor="vehicleStatus"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
                         >
                             Status
                         </label>
-                        <input
-                            type="text"
-                            id="status"
-                            onChange={(e) => setStatus(e.target.value)}
-                            value={status}
+                        <select
+                            id="vehicleStatus"
                             className="w-full p-2 border rounded border-blue-400"
-                            placeholder="Active"
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="" disabled>
+                                Select Status
+                            </option>
+                            <option value="Available">Available</option>
+                            <option value="Out of Service">Out of Service</option>
+                        </select>
                     </div>
+
                     <div>
                         <label
                             htmlFor="remarks"
