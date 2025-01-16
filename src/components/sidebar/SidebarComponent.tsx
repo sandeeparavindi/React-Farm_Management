@@ -11,18 +11,23 @@ export const SidebarComponent = () => {
 
     return (
         <div className="flex">
+            {/* Sidebar */}
             <div
-                className={`bg-blue-500 text-white min-h-screen transition-all duration-300 shadow-lg ${
-                    isSidebarOpen ? "w-64" : "w-16"
+                className={`min-h-screen transition-all duration-300 shadow-lg bg-gradient-to-b from-blue-600 to-black ${
+                    isSidebarOpen ? "w-64" : "w-20"
                 }`}
             >
                 <div className="flex items-center justify-between p-4">
-                    <span className={`font-semibold text-xl ${!isSidebarOpen && "hidden"}`}>
+                    <span
+                        className={`font-bold text-xl text-white ${
+                            !isSidebarOpen && "hidden"
+                        }`}
+                    >
                         GREEN SHADOW
                     </span>
                     <button
                         onClick={toggleSidebar}
-                        className="text-gray-200 hover:text-white focus:outline-none p-2 rounded hover:bg-blue-600"
+                        className="text-white focus:outline-none p-2 rounded hover:bg-blue-700"
                     >
                         <svg
                             className="w-6 h-6"
@@ -30,54 +35,59 @@ export const SidebarComponent = () => {
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
+                            strokeWidth="2"
                         >
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                strokeWidth="2"
                                 d={
                                     isSidebarOpen
-                                        ? "M6 18L18 6M6 6l12 12" // Close icon
-                                        : "M4 6h16M4 12h16M4 18h16" // Hamburger icon
+                                        ? "M6 18L18 6M6 6l12 12"
+                                        : "M4 6h16M4 12h16M4 18h16"
                                 }
                             />
                         </svg>
                     </button>
                 </div>
-                <ul className="space-y-2 p-4">
+
+                {/* Menu */}
+                <ul className="space-y-2 p-4 mt-5">
                     {/* Home Link */}
                     <li>
                         <Link
                             to="/"
-                            className="flex items-center space-x-3 hover:bg-blue-600 p-2 rounded"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
                         >
-                            <FaHome className="text-lg" size={24}/>
-                            {isSidebarOpen && <span className="text-lg">Home</span>}
+                            <FaHome className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Home</span>}
                         </Link>
                     </li>
+
                     {/* Fields Link */}
                     <li>
                         <Link
                             to="/fields"
-                            className="flex items-center space-x-3 hover:bg-blue-600 p-2 rounded"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
                         >
-                            <FaTractor className="text-lg" size={24} />
-                            {isSidebarOpen && <span className="text-lg">Field</span>}
+                            <FaTractor className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Field</span>}
                         </Link>
                     </li>
+
                     {/* Vehicles Link */}
                     <li>
                         <Link
                             to="/vehicles"
-                            className="flex items-center space-x-3 hover:bg-blue-600 p-2 rounded"
+                            className="flex items-center space-x-3 p-2 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:shadow-lg border border-gray-400 hover:border-blue-300"
                         >
-                            <FaTruck className="text-lg" size={24} />
-                            {isSidebarOpen && <span className="text-lg">Vehicle</span>}
+                            <FaTruck className="text-lg text-white" size={24} />
+                            {isSidebarOpen && <span className="text-lg text-white">Vehicle</span>}
                         </Link>
                     </li>
                 </ul>
             </div>
 
+            {/* Main Content */}
             <div className="flex-grow p-6"></div>
         </div>
     );

@@ -70,7 +70,7 @@ export const VehicleFormComponent = () => {
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
             handleSearchByCode();
         }
     };
@@ -78,7 +78,7 @@ export const VehicleFormComponent = () => {
 
     return (
         <>
-            <form className="mx-2 mt-6">
+            <form className="mx-2 mt-6 p-4 rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-50">
                 <div className="grid gap-6 mb-6 md:grid-cols-3">
                     <div>
                         <label
@@ -93,7 +93,7 @@ export const VehicleFormComponent = () => {
                             onChange={(e) => setVehicleCode(e.target.value)}
                             onKeyDown={handleKeyDown}
                             value={vehicleCode}
-                            className="w-full p-2 border rounded border-green-600"
+                            className="w-full p-2 border rounded border-blue-400"
                             placeholder="V123"
                             required
                         />
@@ -110,7 +110,7 @@ export const VehicleFormComponent = () => {
                             id="license_plate"
                             onChange={(e) => setLicensePlate(e.target.value)}
                             value={licensePlate}
-                            className="w-full p-2 border rounded border-green-600"
+                            className="w-full p-2 border rounded border-blue-400"
                             placeholder="ABC-1234"
                             required
                         />
@@ -127,7 +127,7 @@ export const VehicleFormComponent = () => {
                             id="category"
                             onChange={(e) => setCategory(e.target.value)}
                             value={category}
-                            className="w-full p-2 border rounded border-green-600"
+                            className="w-full p-2 border rounded border-blue-400 mb-2"
                             placeholder="Truck"
                             required
                         />
@@ -144,7 +144,7 @@ export const VehicleFormComponent = () => {
                             id="fuel"
                             onChange={(e) => setFuel(e.target.value)}
                             value={fuel}
-                            className="w-full p-2 border rounded border-green-600"
+                            className="w-full p-2 border rounded border-blue-400"
                             placeholder="Diesel"
                             required
                         />
@@ -161,7 +161,7 @@ export const VehicleFormComponent = () => {
                             id="status"
                             onChange={(e) => setStatus(e.target.value)}
                             value={status}
-                            className="w-full p-2 border rounded border-green-600"
+                            className="w-full p-2 border rounded border-blue-400"
                             placeholder="Active"
                             required
                         />
@@ -178,14 +178,14 @@ export const VehicleFormComponent = () => {
                             id="remarks"
                             onChange={(e) => setRemarks(e.target.value)}
                             value={remarks}
-                            className="w-full p-2 border rounded border-green-600"
+                            className="w-full p-2 border rounded border-blue-400 mb-4"
                             placeholder="Good Condition"
                         />
                     </div>
                 </div>
             </form>
 
-            <div className="grid gap-5 md:grid-cols-3 mx-20">
+            <div className="grid gap-5 md:grid-cols-3 mx-20 mt-8">
                 <button
                     type="button"
                     onClick={() => handleVehicleOperation("ADD_VEHICLE")}
@@ -196,7 +196,7 @@ export const VehicleFormComponent = () => {
                 <button
                     type="button"
                     onClick={() => handleVehicleOperation("UPDATE_VEHICLE")}
-                    className="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    className="w-full text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                     Update Vehicle
                 </button>

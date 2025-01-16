@@ -2,7 +2,7 @@ import { Vehicle } from "../../models/vehicle.ts";
 
 export const VehicleTableComponent = ({ vehicles }: { vehicles: Vehicle[] }) => {
     return (
-        <div className="overflow-x-auto mx-2 mt-7">
+        <div className="overflow-x-auto mx-2 mt-7 bg-gradient-to-r from-white to-light-blue-100 p-4 rounded-lg shadow-lg">
             <table className="min-w-full border-collapse border border-gray-200 bg-white shadow-md sm:rounded-lg">
                 <thead>
                 <tr className="bg-gray-100 text-gray-600 text-sm uppercase tracking-wider">
