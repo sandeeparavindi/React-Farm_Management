@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Crop } from "../../models/crop";
-import { addCrop, deleteCrop, updateCrop } from "../../reducers/CropSlice.tsx";
-import { CropTableComponent } from "./CropTableComponent.tsx";
+import { addCrop, deleteCrop, updateCrop } from "../../reducers/CropSlice";
+import { CropTableComponent } from "./CropTableComponent";
+import { Field } from "../../models/field";
 
 export const CropFormComponent = () => {
     const dispatch = useDispatch();
-    // @ts-ignore
-    const crops = useSelector((state) => state.crop);
+    const crops = useSelector((state: any) => state.crop);
+    const fields = useSelector((state: any) => state.field);
 
     const [cropCode, setCropCode] = useState("");
     const [commonName, setCommonName] = useState("");
@@ -15,17 +16,30 @@ export const CropFormComponent = () => {
     const [category, setCategory] = useState("");
     const [season, setSeason] = useState("");
     const [fieldCode, setFieldCode] = useState("");
+    const [fieldName, setFieldName] = useState("");
     const [cropImage, setCropImage] = useState<File | null>(null);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
     const categories = ["Rice", "Cereal", "Vegetable", "Fruit"];
     const seasons = ["Winter", "Summer", "Autumn", "Spring"];
 
-    const fieldCodes = ["F001", "F002", "F003", "F004", "F005"];
+    const handleFieldCodeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedFieldCode = e.target.value;
+        setFieldCode(selectedFieldCode);
+
+        const field = fields.find((f: Field) => f.field_code === selectedFieldCode);
+        setFieldName(field ? field.field_name : "");
+    };
 
     const handleCropOperation = (type: string) => {
-        if (!cropCode || !commonName || !scientificName || !category || !season || !fieldCode) {
-            alert("Please fill out all required fields.");
+        if (!cropCode) {
+            alert("Please enter a crop code.");
+            return;
+        }
+
+        const crop = crops.find((c: Crop) => c.crop_code === cropCode);
+        if (type === "DELETE_CROP" && !crop) {
+            alert("Crop not found.");
             return;
         }
 
@@ -35,6 +49,7 @@ export const CropFormComponent = () => {
             scientific_name: scientificName,
             category,
             season,
+            field: fieldName,
             field_code: fieldCode,
             crop_image: previewImage || "",
         };
@@ -42,30 +57,46 @@ export const CropFormComponent = () => {
         switch (type) {
             case "ADD_CROP":
                 dispatch(addCrop(newCrop));
-                clearForm();
                 break;
             case "UPDATE_CROP":
                 dispatch(updateCrop(newCrop));
-                clearForm();
                 break;
             case "DELETE_CROP":
                 dispatch(deleteCrop(cropCode));
-                clearForm();
                 break;
             default:
                 break;
         }
+        clearForm();
     };
 
-    const handleImageChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        setImage: React.Dispatch<React.SetStateAction<File | null>>,
-        setPreview: React.Dispatch<React.SetStateAction<string | null>>
-    ) => {
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            setImage(file);
-            setPreview(URL.createObjectURL(file));
+            setCropImage(file);
+            setPreviewImage(URL.createObjectURL(file));
+        }
+    };
+
+    const handleSearch = () => {
+        const crop = crops.find((c: Crop) => c.crop_code === cropCode);
+        if (crop) {
+            setCommonName(crop.common_name);
+            setScientificName(crop.scientific_name);
+            setCategory(crop.category);
+            setSeason(crop.season);
+            setFieldCode(crop.field_code);
+            setFieldName(crop.field);
+            setPreviewImage(crop.crop_image);
+        } else {
+            alert("Crop not found.");
+        }
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleSearch();
         }
     };
 
@@ -76,6 +107,7 @@ export const CropFormComponent = () => {
         setCategory("");
         setSeason("");
         setFieldCode("");
+        setFieldName("");
         setCropImage(null);
         setPreviewImage(null);
     };
@@ -93,6 +125,7 @@ export const CropFormComponent = () => {
                             id="crop_code"
                             value={cropCode}
                             onChange={(e) => setCropCode(e.target.value)}
+                            onKeyPress={handleKeyPress}
                             className="w-full p-2 border rounded border-blue-400"
                             placeholder="C123"
                             required
@@ -169,19 +202,30 @@ export const CropFormComponent = () => {
                             Field Code
                         </label>
                         <select
-                            id="field_code"
-                            value={fieldCode}
-                            onChange={(e) => setFieldCode(e.target.value)}
                             className="w-full p-2 border rounded border-blue-400"
+                            value={fieldCode}
+                            onChange={handleFieldCodeChange}
                             required
                         >
                             <option value="">Select Field Code</option>
-                            {fieldCodes.map((code) => (
-                                <option key={code} value={code}>
-                                    {code}
+                            {fields.map((field: Field) => (
+                                <option key={field.field_code} value={field.field_code}>
+                                    {field.field_code}
                                 </option>
                             ))}
                         </select>
+                    </div>
+                    <div>
+                        <label htmlFor="field_name" className="block mb-2 text-sm font-medium text-gray-900">
+                            Field Name
+                        </label>
+                        <input
+                            type="text"
+                            value={fieldName}
+                            placeholder="Field Name"
+                            readOnly
+                            className="w-full p-2 border rounded border-blue-400"
+                        />
                     </div>
                     <div>
                         <label htmlFor="crop_image" className="block mb-2 text-sm font-medium text-gray-900">
@@ -190,7 +234,7 @@ export const CropFormComponent = () => {
                         <input
                             type="file"
                             id="crop_image"
-                            onChange={(e) => handleImageChange(e, setCropImage, setPreviewImage)}
+                            onChange={handleImageChange}
                             className="w-full p-2 border rounded border-blue-400"
                             accept="image/*"
                         />

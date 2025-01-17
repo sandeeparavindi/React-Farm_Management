@@ -5,7 +5,7 @@ export class Crop {
     category: string;
     season: string;
     crop_image: string;
-    field_code: string;
+    field: string;
 
     constructor(
         crop_code: string,
@@ -14,7 +14,7 @@ export class Crop {
         category: string,
         season: string,
         crop_image: string,
-        field_code: string
+        field: string
     ) {
         this.crop_code = crop_code;
         this.common_name = common_name;
@@ -22,6 +22,6 @@ export class Crop {
         this.category = category;
         this.season = season;
         this.crop_image = crop_image;
-        this.field_code = field_code;
+        this.field = field;
     }
 }
