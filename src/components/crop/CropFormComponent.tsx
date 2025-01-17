@@ -14,14 +14,17 @@ export const CropFormComponent = () => {
     const [scientificName, setScientificName] = useState("");
     const [category, setCategory] = useState("");
     const [season, setSeason] = useState("");
+    const [fieldCode, setFieldCode] = useState("");
     const [cropImage, setCropImage] = useState<File | null>(null);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
     const categories = ["Rice", "Cereal", "Vegetable", "Fruit"];
     const seasons = ["Winter", "Summer", "Autumn", "Spring"];
 
+    const fieldCodes = ["F001", "F002", "F003", "F004", "F005"];
+
     const handleCropOperation = (type: string) => {
-        if (!cropCode || !commonName || !scientificName || !category || !season) {
+        if (!cropCode || !commonName || !scientificName || !category || !season || !fieldCode) {
             alert("Please fill out all required fields.");
             return;
         }
@@ -32,6 +35,7 @@ export const CropFormComponent = () => {
             scientific_name: scientificName,
             category,
             season,
+            field_code: fieldCode,
             crop_image: previewImage || "",
         };
 
@@ -71,23 +75,9 @@ export const CropFormComponent = () => {
         setScientificName("");
         setCategory("");
         setSeason("");
+        setFieldCode("");
         setCropImage(null);
         setPreviewImage(null);
-    };
-
-    const handleCropCodeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            const crop = crops.find((c: Crop) => c.crop_code === cropCode);
-            if (crop) {
-                setCommonName(crop.common_name);
-                setScientificName(crop.scientific_name);
-                setCategory(crop.category);
-                setSeason(crop.season);
-                setPreviewImage(crop.crop_image || null);
-            } else {
-                alert("Crop not found.");
-            }
-        }
     };
 
     return (
@@ -103,7 +93,6 @@ export const CropFormComponent = () => {
                             id="crop_code"
                             value={cropCode}
                             onChange={(e) => setCropCode(e.target.value)}
-                            onKeyDown={handleCropCodeEnter}
                             className="w-full p-2 border rounded border-blue-400"
                             placeholder="C123"
                             required
@@ -171,6 +160,25 @@ export const CropFormComponent = () => {
                             {seasons.map((seasonOption) => (
                                 <option key={seasonOption} value={seasonOption}>
                                     {seasonOption}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="field_code" className="block mb-2 text-sm font-medium text-gray-900">
+                            Field Code
+                        </label>
+                        <select
+                            id="field_code"
+                            value={fieldCode}
+                            onChange={(e) => setFieldCode(e.target.value)}
+                            className="w-full p-2 border rounded border-blue-400"
+                            required
+                        >
+                            <option value="">Select Field Code</option>
+                            {fieldCodes.map((code) => (
+                                <option key={code} value={code}>
+                                    {code}
                                 </option>
                             ))}
                         </select>

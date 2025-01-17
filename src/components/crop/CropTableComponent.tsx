@@ -1,4 +1,4 @@
-import { Crop } from "../../models/crop.ts";
+import {Crop} from "../../models/crop.ts";
 
 export const CropTableComponent = ({ crops = [] }: { crops?: Crop[] }) => {
     return (
@@ -11,6 +11,7 @@ export const CropTableComponent = ({ crops = [] }: { crops?: Crop[] }) => {
                     <th className="px-6 py-3 text-left font-medium">Scientific Name</th>
                     <th className="px-6 py-3 text-left font-medium">Category</th>
                     <th className="px-6 py-3 text-left font-medium">Season</th>
+                    <th className="px-6 py-3 text-left font-medium">Field Code</th>
                     <th className="px-6 py-3 text-left font-medium">Crop Image</th>
                 </tr>
                 </thead>
@@ -26,6 +27,7 @@ export const CropTableComponent = ({ crops = [] }: { crops?: Crop[] }) => {
                             <td className="px-6 py-4">{crop.scientific_name}</td>
                             <td className="px-6 py-4">{crop.category}</td>
                             <td className="px-6 py-4">{crop.season}</td>
+                            <td className="px-6 py-4">{crop.field_code}</td>
                             <td className="px-6 py-4">
                                 {crop.crop_image ? (
                                     <img
@@ -41,7 +43,7 @@ export const CropTableComponent = ({ crops = [] }: { crops?: Crop[] }) => {
                     ))
                 ) : (
                     <tr>
-                        <td colSpan={6} className="text-center py-4 text-gray-500">
+                        <td colSpan={7} className="text-center py-4 text-gray-500">
                             No crops available.
                         </td>
                     </tr>
