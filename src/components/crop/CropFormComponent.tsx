@@ -243,7 +243,7 @@ export const CropFormComponent = () => {
                 </div>
             </form>
 
-            <div className="grid gap-5 md:grid-cols-3 mx-20 mt-8">
+            <div className="grid gap-5 md:grid-cols-4 mx-20 mt-8">
                 <button
                     type="button"
                     onClick={() => handleCropOperation("ADD_CROP")}
@@ -260,6 +260,13 @@ export const CropFormComponent = () => {
                 </button>
                 <button
                     type="button"
+                    onClick={() => clearForm()}
+                    className="w-full text-white bg-purple-500 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                    Clear Form
+                </button>
+                <button
+                    type="button"
                     onClick={() => handleCropOperation("DELETE_CROP")}
                     className="w-full text-white bg-red-500 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
@@ -267,7 +274,7 @@ export const CropFormComponent = () => {
                 </button>
             </div>
 
-            <CropTableComponent crops={crops} />
+            <CropTableComponent crops={crops}/>
         </>
     );
 };

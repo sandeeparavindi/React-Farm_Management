@@ -179,7 +179,7 @@ export const FieldFormComponent = () => {
                 </div>
             </form>
 
-            <div className="grid gap-5 md:grid-cols-3 mx-20 mt-8">
+            <div className="grid gap-5 md:grid-cols-4 mx-20 mt-8">
                 <button
                     type="button"
                     onClick={() => handleFieldOperation("ADD_FIELD")}
@@ -196,6 +196,13 @@ export const FieldFormComponent = () => {
                 </button>
                 <button
                     type="button"
+                    onClick={() => clearForm()}
+                    className="w-full text-white bg-purple-500 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                    Clear Form
+                </button>
+                <button
+                    type="button"
                     onClick={() => handleFieldOperation("DELETE_FIELD")}
                     className="w-full text-white bg-red-500 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
@@ -203,7 +210,7 @@ export const FieldFormComponent = () => {
                 </button>
             </div>
 
-            <FieldTableComponent fields={fields} />
+            <FieldTableComponent fields={fields}/>
         </>
     );
 };

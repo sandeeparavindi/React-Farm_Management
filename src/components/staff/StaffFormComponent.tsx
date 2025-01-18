@@ -135,7 +135,7 @@ export const StaffFormComponent = () => {
 
     return (
         <>
-            <form className="mx-2 mt-6 p-4 rounded-lg ">
+            <form className="mx-2 mt-6 p-4 rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-50">
                 <div className="grid gap-6 mb-6 md:grid-cols-3">
                     <div>
                         <label htmlFor="staff_id" className="block mb-2 text-sm font-medium text-gray-900">
@@ -358,7 +358,7 @@ export const StaffFormComponent = () => {
                     </div>
                 </div>
             </form>
-            <div className="grid gap-5 md:grid-cols-3 mx-20 mt-8">
+            <div className="grid gap-5 md:grid-cols-4 mx-20 mt-8">
                 <button
                     type="button"
                     onClick={() => handleStaffOperation("ADD_STAFF")}
@@ -372,6 +372,13 @@ export const StaffFormComponent = () => {
                     className="w-full text-white bg-yellow-500 hover:bg-yellow-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                     Update Staff
+                </button>
+                <button
+                    type="button"
+                    onClick={() => clearForm()}
+                    className="w-full text-white bg-purple-500 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                    Clear Form
                 </button>
                 <button
                     type="button"

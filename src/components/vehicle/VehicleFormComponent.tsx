@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Vehicle } from "../../models/vehicle.ts";
 import { addVehicle, deleteVehicle, updateVehicle } from "../../reducers/VehicleSlice.tsx";
@@ -209,7 +209,7 @@ export const VehicleFormComponent = () => {
                 </div>
             </form>
 
-            <div className="grid gap-5 md:grid-cols-3 mx-20 mt-8">
+            <div className="grid gap-5 md:grid-cols-4 mx-20 mt-8">
                 <button
                     type="button"
                     onClick={() => handleVehicleOperation("ADD_VEHICLE")}
@@ -223,6 +223,13 @@ export const VehicleFormComponent = () => {
                     className="w-full text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                     Update Vehicle
+                </button>
+                <button
+                    type="button"
+                    onClick={() => clearForm()}
+                    className="w-full text-white bg-purple-500 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                    Clear Form
                 </button>
                 <button
                     type="button"
