@@ -4,6 +4,7 @@ import { Equipment } from "../../models/equipment";
 import { addEquipment, deleteEquipment, updateEquipment } from "../../reducers/EquipmentSlice";
 import { Field } from "../../models/field";
 import { Staff } from "../../models/staff";
+import {EquipmentCardComponent} from "./EquipmentCardComponent.tsx";
 
 export const EquipmentFormComponent = () => {
     const dispatch = useDispatch();
@@ -260,14 +261,14 @@ export const EquipmentFormComponent = () => {
                 </button>
                 <button
                     type="button"
-                    onClick={() => handleEquipmentOperation("DELETE_EQUIPMENT")}
-                    className="w-full text-white bg-red-500 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    onClick={() => clearForm()}
+                    className="w-full text-white bg-blue-500 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
-                    Delete Equipment
+                    Clear Form
                 </button>
             </div>
 
-            {/*<EquipmentTableComponent equipments={equipments} />*/}
+            <EquipmentCardComponent/>
         </>
     );
 };
