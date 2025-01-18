@@ -262,12 +262,11 @@ export const EquipmentFormComponent = () => {
                 <button
                     type="button"
                     onClick={() => clearForm()}
-                    className="w-full text-white bg-blue-500 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    className="w-full text-white bg-purple-500 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                     Clear Form
                 </button>
             </div>
-
             <EquipmentCardComponent/>
         </>
     );
